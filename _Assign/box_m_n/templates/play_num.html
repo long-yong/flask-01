@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+            margin: 10px;
+        }
+
+        body {
+            background-color: LightBlue;
+        }
+        h1 {
+            color: maroon;
+            margin-left: 40px;
+        }
+
+        .box {
+            width:100px;
+            height: 100px;
+            display: inline-block;
+            background-color: blue;
+        }
+
+    </style>
+</head>
+    <div id="container">
+        {%  for i in range(mynum) %}
+        <div class="box"></div>
+        {%  endfor  %}
+    </div>
+<body>
+
+</body>
+
+</html>

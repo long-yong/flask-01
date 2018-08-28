@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <!-- linking a css style sheet -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/my_style_sheet.css') }}">
+
+    <!-- linking an image -->
+    <img src="{{ url_for('static', filename='img/my_img.jpg') }}">
+
+</head>
+
+<body>
+
+    <h1>
+        Hello
+    </h1>
+
+    <!-- linking a javascript file -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/my_script.js') }}"></script>
+
+    <script>
+        foo();
+    </script>
+
+</body>
+
+</html>

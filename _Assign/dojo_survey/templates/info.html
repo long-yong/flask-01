@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Info</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            vertical-align: top;
+        }
+        #container {
+            width: 480px;
+            height: 430px;
+            margin: 20px;
+            border: 1px solid black;
+            padding-left: 40px;
+        }
+        div {
+            width:238px;
+            height: 25px;
+            display: inline-block;
+        }
+
+        #comment {
+            width:160px;
+            height: 25px;
+            white-space:nowrap;
+            overflow:hidden;
+            display: inline-block;
+        }
+
+        #smile {
+            display: none;
+        }
+
+    </style>
+
+    <script>
+        function goBack()  { window.history.back() }
+    </script>
+
+</head>
+<body>
+    <div id='container'>
+           <form id='form1' action='/log_post' method='post'>
+                <h3>Submitted Info</h3>
+                <div>Name:</div>  <div> {{ session['name'] }} </div> <br> <br>
+                <div>Dojo Location:</div>  <div> {{ session['location'] }} </div> <br> <br>
+                <div>Favorite Language:</div>  <div> {{ session['lang'] }}   </div> <br> <br>
+               <div>Comment:</div>  <div id="comment">{{ session['comment'] }}</div>
+               <a id="smile">...&nbsp;&nbsp;:)</a><br><br> <br><br>
+               <div></div> <div><input type="button" value="Back" onclick="goBack()" /></div>
+          </form>
+    </div>
+
+     <script>
+        $(document).ready(function(){
+            if($('#comment').html().length > 20) $('#smile').show();
+        });
+    </script>
+
+</body>
+</html>

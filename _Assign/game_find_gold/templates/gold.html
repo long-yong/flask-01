@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0px;
+            padding:0px;
+            vertical-align: top;
+        }
+        .container {
+            width: 810px;
+            height: 440px;
+            margin:5px;
+            border: 1px solid black;
+            padding-left: 10px;
+        }
+        .box {
+            border: 1px solid black;
+            width: 165px;
+            display: inline-block;
+            margin: 15px;
+            text-align: center;
+         }
+
+        #record {
+            margin-top:10px;
+            margin-left:15px;
+            width:768px;
+            height:150px;
+        }
+
+        .btn {
+            width:80px;
+            height: 30px;
+        }
+
+    </style>
+
+    <script>
+        function add(name, n1, n2){
+            rout = '/gold_post/'+name+'/'+n1+'/'+n2;
+            document.getElementById('form1').action = rout;
+            document.getElementById('form1').submit();
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <br>
+        <div >
+             Your Gold &nbsp; <input type="text" value="{{session['gold']}}" readonly="readonly"/>
+        </div>
+        <br>
+
+        <form action="" id='form1' method="post">
+            <div class="box">
+                <br> <h3>Farm</h3> <br>
+                <p>(earns 10-20 golds)</p> <br> <br>
+                <input class='btn' type="button" value='Find Gold' onclick="add('farm',10,20)"/> <br> <br>
+            </div>
+
+             <div class="box">
+                <br> <h3>Cave</h3> <br>
+                <p>(earns 5-10 golds)</p> <br> <br>
+                <input class='btn' type="button" value='Find Gold' onclick="add('cave',5,10)"/> <br> <br>
+            </div>
+
+             <div class="box">
+                <br> <h3>House</h3> <br>
+                <p>(earns 2-5 golds)</p> <br> <br>
+                <input class='btn' type="button" value='Find Gold' onclick="add('House',2,5)"/> <br> <br>
+            </div>
+
+             <div class="box">
+                <br> <h3>Casino</h3> <br>
+                <p>(earns/takes 0-50 golds)</p> <br> <br>
+                <input class='btn' type="button" value='Find Gold' onclick="add('casino',-50,50)"/> <br> <br>
+            </div>
+        </form>
+
+        <textarea id="record" readonly="readonly" contenteditable="true">{{ session['activities'] }}</textarea>
+
+    </div>
+
+
+
+</body>
+
+</html>

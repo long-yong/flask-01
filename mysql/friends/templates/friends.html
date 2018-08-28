@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin:0px;
+            padding:0px;
+            vertical-align: top;
+        }
+        #container {
+            background-color: rgb(240,240,240);
+            width: 400px;
+            height: 400px;
+            text-align: center;
+            margin:20px;
+        }
+        #box {
+            width: 400px;
+            height: 160px;
+            text-align: center;
+            margin:0px;
+            padding:0px;
+        }
+        div {
+            width:130px;
+            height: 20px;
+            font-size:11px;
+            display: inline-block;
+        }
+        .left {
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            margin-left:75px;
+        }
+        input {
+            width : 60px;
+            height: 12px;
+            font-size: 8px;
+        }
+        #btn {
+            width:60px;
+            height:20px;
+            font-size: 10px;
+        }
+        .alert {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+            line-height: 20px;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            arr = [];
+            {% for a in friends %}
+                {% for b in a %}
+                    {% set c = a[b] %}
+                    arr.push('{{ c }}');
+                {% endfor %}
+            {% endfor %}
+            len = arr.length;
+            str="";
+            for(i=0;i<len;i+=3) {
+                str+="<div>First name:</div> <div>"+arr[i+0]+"</div><br>";
+                str+="<div>Last name:</div> <div>" +arr[i+1]+"</div><br>";
+                str+="<div>Ocupation:</div> <div>" +arr[i+2]+"</div><br>";
+                str+="<a>------------------------------------------------------------------------</a><br>"
+            }
+            h1 = 10 + 20*len + 13*len/3;
+            $('#box').height(h1);
+            $('#container').height(h1+200);
+            $('#box').html(str);
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="container">
+            <br> <h2>These are all my frinedns!</h2> <br>
+            <div id="box"></div>
+        <form id='form1' action='/friends_post' method='post'>
+            <div class="left">Add a friend</div>
+            <div class="alert">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            </div><br><br>
+            <div>First name:</div> <div> <input type='text' id="first_name" name="first_name" value="{{ session['first_name'] }}"></div><br>
+            <div>Last name:</div>  <div> <input type='text' id="last_name"  name="last_name"  value="{{ session['last_name' ] }}"></div><br>
+            <div>Occupation:</div> <div> <input type='text' id="occupation" name="occupation" value="{{ session['occupation'] }}"></div><br>
+            <br><input id='btn' type='submit' value='&nbsp;Add&nbsp;&nbsp;'>
+        </form>
+    </div>
+
+</body>
+
+</html>

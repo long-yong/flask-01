@@ -1,0 +1,105 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+       <title>Title</title>
+        <style>
+
+            * {
+                vertical-align: top;
+            }
+
+            .left {
+                width: 400px;
+                height:500px;
+                border: 1px solid black;
+                display: inline-block;
+                padding-left: 50px;
+            }
+
+            .right {
+                width: 250px;
+                height:500px;
+                border: 1px;
+                display: inline-block;
+                margin-left: 2px;
+                padding-left: 10px;
+            }
+
+            .row {
+                display: inline-block;
+                width: 120px;
+                height: 35px;
+                margin-left: 20px;
+            }
+
+            input {
+                width: 100px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="left">
+            <form>
+                <h2>Dojo Fruit Store</h2>
+                {% set total = post['Strowberry']|int + post['Rospberry']|int + post['App']|int  %}
+                <h4>We order {{ total }} items for you and changed your</h4>
+                <h4>student occount on March 23rd 2019.</h4>
+                <div class="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fruit Name
+                </div>
+                <div class="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity
+                </div>
+                <br>
+                <div class="row">
+                    Strowberry:
+                </div>
+                <div class="row">
+                    {{ post['Strowberry'] }}
+                </div>
+                <br>
+                <div class="row">
+                    Rospberry:
+                </div>
+                <div class="row">
+                    {{ post['Rospberry'] }}
+                </div>
+                <br>
+                <div class="row">
+                    App
+                </div>
+                <div class="row">
+                    {{ post['App'] }}
+                </div>
+                <br>
+                <br>
+                <h4>Your Infomation:</h4>
+                <div class="row">
+                    Name:
+                </div>
+                <div class="row">
+                    {{ post['name'] }}
+                </div>
+                <br>
+                <div class="row">
+                    Your Student ID:
+                </div>
+                <div class="row">
+                    {{ post['id'] }}
+                </div>
+                <br>
+                <div class="row">
+                </div>
+                <div class="row">
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="right">
+        </div>
+
+    </body>
+</html></html>

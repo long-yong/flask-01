@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin:0px;
+            padding:0px;
+            vertical-align: top;
+        }
+        .container {
+            width: 600px;
+            height: 450px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        input {
+            margin-top: 10px;
+            width: 80px;
+            height: 25px;
+        }
+        #boxred {
+            background-color: red;
+            margin: 0 auto;
+            width: 180px;
+            height:160px;
+            display: none;
+        }
+        #boxgreen {
+            background-color: green;
+            margin: 0 auto;
+            width: 180px;
+            height:160px;
+            display: none;
+        }
+        #btn_again {
+            background-color: white;
+            border: 1px solid black;
+            margin-top: 10px;
+            top: 25px;
+            width: 80px;
+            height: 25px;
+            box-shadow: 2px 2px 2px rgb(20,20,20);
+        }
+        #btn_submit {
+            margin-top: 10px;
+            top: 20px;
+            width: 68px;
+            height: 28px;
+            box-shadow: 2px 2px 2px rgb(20,20,20);
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('#btn_submit').click(function () {
+                str =$('#num').val();
+                if(str=={{ session['guess'] }}) {
+                    $('#boxred').hide();
+                    $('#num').hide();
+                    $('#btn_submit').hide();
+                    $('#boxgreen').show();
+                }
+                else if (str!='') {
+                    $('#boxred').show();
+                    if(str>{{session['guess']}}) $('#tips').html('Too High');
+                    else                         $('#tips').html('Too Low');
+                }
+            });
+        });
+
+        function great_number_post(){
+            document.getElementById('form1').action='/great_number_post';
+            document.getElementById('form1').submit();
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <br><br> <h2>Welcome to the great number game!</h2>
+        <br> <p> I am think of a number between 1 and 100 </p>
+        <br> <p>take a guess</p> <br>
+
+        <div id='boxred'>
+            <br><br><br><br>
+            <h2 id="tips"></h2>
+        </div>
+
+        <div id="boxgreen">
+            <form id='form1' method="post">
+                <br> <h2> {{ session['guess'] }} was the </h2>  <br>  <h2> number </h2>
+                <br> <button id='btn_again' onclick="great_number_post()">Play again</button>
+            </form>
+        </div>
+
+        <br> <input id='num' type='number' name="number"/>
+        <br> <button id='btn_submit'>Submit</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Validation</title>
+    <style>
+        * {
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+  <h3>Name & Email Validation</h3>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form action='/log_post', method='post'>
+      Name:&nbsp;<input type="text" name="name"> <br><br>
+      Email: <input id="email" name="email" type="text"> <br><br>
+      Comment: <textarea id="comment" name="comment" ></textarea>
+      <br><br><button>Submit</button>
+  </form>
+
+</body>
+</html>

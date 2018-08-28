@@ -1,0 +1,150 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+       <title>Title</title>
+        <style>
+
+            * {
+                vertical-align: top;
+            }
+
+            .left {
+                width: 400px;
+                height:500px;
+                border: 1px solid black;
+                display: inline-block;
+                padding-left: 50px;
+            }
+
+            .right {
+                width: 250px;
+                height:500px;
+                border: 1px;
+                border: 1px solid black;
+                background-color: rgb(180,167,214);
+                display: inline-block;
+                margin-left: 2px;
+                padding-left: 10px;
+            }
+
+            .row {
+                display: inline-block;
+                width: 120px;
+                height: 35px;
+                margin-left: 20px;
+            }
+
+            input {
+                width: 100px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="left">
+
+            <form action='/log_post' method='post'>
+                <h2>Dojo Fruit Store</h2>
+                <h4>What would you like to buy?</h4>
+                <h4></h4>
+                <div class="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fruit Name
+                </div>
+                <div class="row">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity
+                </div>
+                <br>
+                <div class="row">
+                    Strowberry:
+                </div>
+                <div class="row">
+                    <select name="Strowberry">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                    </select>
+                </div>
+                <br>
+                <div class="row">
+                    Rospberry:
+                </div>
+                <div class="row">
+                    <select name="Rospberry">
+                      <option value="0">0</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                    </select>
+                </div>
+                <br>
+                <div class="row">
+                    App
+                </div>
+                <div class="row">
+                    <select name="App">
+                      <option value=0>0</option>
+                      <option value=1>1</option>
+                      <option value=2>2</option>
+                      <option value=3>3</option>
+                      <option value=4>4</option>
+                      <option value=5>5</option>
+                      <option value=6>6</option>
+                      <option value=7>7</option>
+                      <option value=8>8</option>
+                      <option value=9>9</option>
+                    </select>
+                </div>
+                <br>
+                <br>
+                <h4>Your Infomation:</h4>
+                <div class="row">
+                    Name:
+                </div>
+                <div class="row">
+                    <input type='text' name='name'>
+                </div>
+                <br>
+                <div class="row">
+                    Your Student ID:
+                </div>
+                <div class="row">
+                    <input type='text' name='id'>
+                </div>
+                <br>
+                <div class="row">
+                </div>
+                <div class="row">
+                    <input type='submit' value='&nbsp;Submit&nbsp;&nbsp;'>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="right">
+            <br>
+            <h2>Welcome to Dojo Store!</h2>
+            <h4>welcome to Dojo!</h4>
+            <h4>welcome to Dojo!</h4>
+            <h4>welcome to Dojo!</h4>
+            <h4>welcome to Dojo!</h4>
+            <h4>welcome to Dojo!</h4>
+            <h4>welcome to Dojo!</h4>
+            <h4>welcome to Dojo!</h4>
+        </div>
+
+    </body>
+</html></html>

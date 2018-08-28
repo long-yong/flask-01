@@ -1,0 +1,69 @@
+<html>
+<head>
+    <title>Validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            vertical-align: top;
+        }
+        #container {
+            width: 480px;
+            height: 380px;
+            margin: 20px;
+            border: 1px solid black;
+            padding-left: 40px;
+        }
+        #flash {
+            color:red;
+            width:400px;
+        }
+
+        td {
+            width:150px;
+            height:30px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id='container'>
+           <form id='form1' action='/log_post' method='post'>
+                <h2>Register for Dojo</h2>
+                <p id='flash'>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </p> <br>
+
+               <table>
+                    <tr>
+                        <td>Email</td>
+                        <td> <input type='text' id="email" name="email" value="{{session['email']}}"></td>
+                    </tr>
+                    <tr>
+                        <td>First_name</td>
+                        <td> <input type='text' id="first_name" name="first_name" value="{{session['first_name']}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Last_name</td>
+                        <td> <input type='text' id="last_name" name="last_name" value="{{session['last_name']}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td> <input type='password' id="pwd" name="pwd" value="{{session['pwd']}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Confirm password</td>
+                        <td> <input type='password' id="confirm" name="confirm" value=""></td>
+                    </tr>
+                </table>
+                <br> <input type="submit">
+          </form>
+    </div>
+</body>
+</html>

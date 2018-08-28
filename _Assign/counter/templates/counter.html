@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin:0px;
+            padding:0px;
+            vertical-align: top;
+        }
+        .container {
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .txt {
+            width: 45px;
+            font-size: 20px;
+            margin:0 auto;
+            display: inline-block;
+        }
+        .btn1 {
+            background-color: crimson;
+            width: 130px;
+            height: 40px;
+            margin: 0 auto;
+            display: inline-block;
+            border-radius: 8px;
+        }
+        .btn2 {
+            background-color: forestgreen;
+            width: 80px;
+            height: 40px;
+            margin: 0 auto;
+            display: inline-block;
+            border-radius: 8px;
+        }
+    </style>
+
+    <script>
+        function add2(){
+            document.getElementById('form1').action='/counter_post/2';
+            document.getElementById('form1').submit();
+        }
+
+        function reset0(){
+            document.getElementById('form1').action='/counter_post/0';
+            document.getElementById('form1').submit();
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <br><br> <h1>Counter</h1>  <br><br>
+
+        <div>
+            <div class='txt'> {{ session['counter'] }} </div>
+            <div class='txt'> Times </div>
+        </div>
+
+        <br><br><br>
+
+        <form action="" id='form1' method="post">
+            <input class='btn1' type="button" id='btn1' value='Add two vistors1' onclick="add2()" />
+            <input class='btn2' type="button" id='btn2' value='Reset' onclick="reset0()" />
+        </form>
+
+    </div>
+
+</body>
+
+</html>

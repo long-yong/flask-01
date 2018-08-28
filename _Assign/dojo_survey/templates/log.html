@@ -1,0 +1,88 @@
+<html>
+<head>
+    <title>Validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            vertical-align: top;
+        }
+        #container {
+            width: 480px;
+            height: 430px;
+            margin: 20px;
+            border: 1px solid black;
+            padding-left: 40px;
+        }
+        #flash {
+            color:red;
+            width:400px;
+        }
+        div {
+            width:238px;
+            height: 25px;
+            display: inline-block;
+        }
+        select {
+            width:170px;
+        }
+        #comment {
+            width:420px;
+            height:60px;
+            text-align: left;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id='container'>
+           <form id='form1' action='/log_post' method='post'>
+                <h1>Dojo Survey With Validations</h1>
+                <p id='flash'>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{message}}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </p> <br>
+                <div>Your name:</div>
+                <div>
+                    <input type="text" id="name" name="name" value="{{ session['name'] }}">
+                </div> <br> <br>
+
+                <div>Dojo Location:</div>
+                <div>
+                    <select id="location" name="location" form="form1">
+                        <option value='Seattle'>Seattle</option>
+                        <option value='San Jose'>San Jose</option>
+                        <option value='NOVA'>NOVA</option>
+                    </select>
+                </div> <br> <br>
+
+                <div>Favorite Language:</div>
+                <div>
+                    <select id="lang" name="lang">
+                        <option value='English'>English</option>
+                        <option value='French'>French</option>
+                        <option value='Chinese'>Chinese</option>
+                        <option value='German'>German</option>
+                    </select>
+                </div> <br> <br>
+
+                <div>Comment (required):</div>  <br>
+                <textarea id="comment" name="comment">{{session['comment']}}</textarea><br><br>
+                <input type="submit">
+          </form>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#location option[value="{{session['location']}}"]').attr("selected", "selected");
+            $('#lang option[value="{{session['lang']}}"]').attr("selected", "selected");
+        });
+    </script>
+
+</body>
+</html>

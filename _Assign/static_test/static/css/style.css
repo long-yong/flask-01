@@ -1,0 +1,9 @@
+
+.container {
+    background-color: darkgrey;
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    border: 1px solid black;
+    text-align: center;
+}

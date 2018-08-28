@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Form Test Show</title>
+  </head>
+  <body>
+    <h1>Log</h1>
+    <form action='/log_post' method='post'>
+        Name: <input type='text' name='name' value="{{ session['name'] }}"> <br><br>
+        Email: <input type='text' name='email' value="{{ session['email'] }}"> <br><br>
+        <input type='submit' value='Submit'>
+    </form>
+  </body>
+</html>

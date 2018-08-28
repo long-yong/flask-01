@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 10px;
+        }
+        body {
+            background-color: LightBlue;
+        }
+        .box {
+            width:100px;
+            height: 100px;
+            display: inline-block;
+            background-color: {{ mycolor }};
+        }
+    </style>
+
+</head>
+    <div id="container">
+        {%  for i in range(mynum) %}
+        <div class="box"></div>
+        {%  endfor  %}
+    </div>
+
+    {#    <script>#}
+    {#            $(document).ready(function () {#}
+    {#                $('.box').css('background-color','{{mycolor}}')#}
+    {#            })#}
+    {#    </script>#}
+
+<body>
+
+</body>
+
+</html>
+
+

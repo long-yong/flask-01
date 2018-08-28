@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link   rel="stylesheet" href = "{{url_for('static', filename='css/style.css')}}" >
+    <script type="text/javascript" src = "{{url_for('static', filename='js/me.js')}}" > </script>
+</head>
+
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='img/mydog.jpg') }}" height="200" width="200" />
+    </div>
+
+    <script>
+
+        foo();
+
+    </script>
+
+</body>
+</html>

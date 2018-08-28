@@ -1,0 +1,172 @@
+<html>
+<head>
+    <title>Validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            vertical-align: top;
+            font-size: 12px;
+        }
+        #container {
+            width: 600px;
+            height: 430px;
+            margin: 20px;
+            border: 1px solid black;
+            padding-left: 20px;
+        }
+        #leftbox {
+            width: 310px;
+            height:500px;
+            display: inline-block;
+            margin-left: 20px;
+        }
+        #rightbox {
+            width: 250px;
+            height:500px;
+            display: inline-block;
+        }
+        td {
+            width:250px;
+            height:15px;
+            font-size: 11px;
+            line-height: 15px;
+        }
+        h3 {
+            font-size:15px;
+        }
+        input {
+            margin-bottom: 6px;
+            width: 250px;
+            font-size: 10px;
+        }
+        button {
+            background-color: lightgreen;
+            width:60px;
+            height:20px;
+            font-size:10px;
+        }
+        #log_email {
+            width: 200px;
+            height: 18px;
+        }
+        #log_pwd {
+            width: 200px;
+            height: 18px;
+        }
+        #success_reg {
+            color: red;
+            display: none;
+            margin-top: 15px;
+        }
+        #success_log {
+            color: red;
+            display: none;
+            margin-top: 15px;
+        }
+        #mode12, #mode22, #mode32, #mode42, #mode52 {
+            color: red;
+            display: none;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            str =
+                {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                "{{ message }}";
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                mode = {{ mymode }};
+
+            switch( mode ) {
+                case 0:
+                    break;
+                case 1:
+                    $("#mode12").html(str);
+                    $("#mode12").show();
+                    break;
+                case 2:
+                    $("#mode22").html(str);
+                    $("#mode22").show();
+                    break;
+                case 3:
+                    $("#mode32").html(str);
+                    $("#mode32").show();
+                    break;
+                case 4:
+                    $("#mode42").html(str);
+                    $("#mode42").show();
+                    break;
+                case 5:
+                    $("#mode52").html(str);
+                    $("#mode52").show();
+                    break;
+                case 7:
+                    $("#success_reg").show();
+                    break;
+                case 8:
+                     $("#success_log").html("Email or Password do not match!");
+                     $("#success_log").show();
+                    break;
+                case 9:
+                    $("#success_log").html("Successfully login!");
+                    $("#success_log").show();
+                    break;
+                 default:
+                    break;
+            }
+        });
+    </script>
+
+</head>
+<body>
+    <div id='container'>
+        <div id="leftbox">
+           <form id='form1' action='/log_reg_post' method='post'>
+                <h3>Log and Registration</h3>
+                <h4>Register here</h4>
+                <table>
+                    <tr> <td id="mode11">First_name</td> </tr>
+                    <tr> <td id="mode12">First_name</td> </tr>
+                    <tr> <td> <input type='text' id="first_name" name="first_name" value="{{session['first_name']}}"></td> </tr>
+
+                    <tr> <td id="mode21">Last_name</td> </tr>
+                    <tr> <td id="mode22">Last_name</td> </tr>
+                    <tr> <td> <input type='text' id="last_name" name="last_name" value="{{session['last_name']}}"></td> </tr>
+
+                    <tr> <td id="mode31">Email</td> </tr>
+                    <tr> <td id="mode32">Email</td> </tr>
+                    <tr> <td> <input type='text' id="email" name="email" value="{{session['email']}}"></td> </tr>
+
+                    <tr> <td id="mode41">Password</td> </tr>
+                    <tr> <td id="mode42">Password</td> </tr>
+                    <tr> <td> <input type='password' id="pwd" name="pwd" value="{{session['pwd']}}"></td> </tr>
+
+                    <tr> <td id="mode51">Confirm password</td> </tr>
+                    <tr> <td id="mode52">Confirm password</td> </tr>
+                    <tr> <td> <input type='password' id="confirm" name="confirm" value="{{session['confirm']}}"></td> </tr>
+                </table>
+
+               <br> <button type="submit">Submit</button>
+          </form>
+                <div id="success_reg">Submitted successfully!</div>
+        </div>
+
+        <div id="rightbox">
+            <form id='form2' action='/login_post' method='post'>
+                <h3></h3>
+                <h4>Login here</h4>
+                Email: <br>
+                <input type='text' id="log_email" name="log_email" value="{{ session['log_email'] }}"/> <br><br>
+                Password: <br>
+                <input type='password' id="log_pwd" name="log_pwd" value="{{ session['log_pwd'] }}"/><br>
+                <br> <button type="submit">Submit</button>  <br> <br>
+            </form>
+                <div id="success_log">Successfully login!</div>
+        </div>
+    </div>
+</body>
+</html>
